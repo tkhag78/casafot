@@ -26,7 +26,7 @@ int lzr_2 = 9;
 // the setup function runs once when you press reset or power the board
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
-  pinMode(lzr_1, OUTPUT);
+  pinMode(lzr_1, INPUT);
   pinMode(lzr_2, OUTPUT); 
 }
 
@@ -35,10 +35,11 @@ void loop() {
   digitalWrite(lzr_2, LOW); 
   delay(1200);   
   digitalWrite(lzr_2, HIGH); 
-  delay(0);                      // wait for a second
+  delay(0);   
+  pinMode(lzr_1, OUTPUT);  
   digitalWrite(lzr_1, LOW); 
   delay(1200);      
-  digitalWrite(lzr_1, HIGH);                // wait for a second
+  pinMode(lzr_1, INPUT);                // wait for a second
    delay(0);                      // wait for a second
   // turn the LED off by making the voltage LOW
 }
