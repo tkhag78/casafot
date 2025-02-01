@@ -1,9 +1,7 @@
-/*
- keyestudio super learning kit
- Project 10
- Photo Resistor
- http://www.keyestudio.com
-*/
+
+#include <Servo.h>
+
+Servo myservo; 
 
 int photoResistorPin = A0;  // initialize analog pin A0, connected with photoresistor
 int ledPin = 11;  // initialize digital pin 11, connected with LED
@@ -14,8 +12,12 @@ int ton = 0;
 
 void setup() {
   pinMode(ledPin, OUTPUT);  // set digital pin 11 as output
-  pinMode(leddly, OUTPUT);  // set digital pin 11 as output
+  pinMode(leddly, OUTPUT);  // set digital pin 8 as output
+  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
   Serial.begin(9600);  // set baud rate at 9600
+   myservo.write(90);
+
+  
 }
 
 
@@ -27,7 +29,6 @@ void loop() {
 
   delay(10);  // wait for 0.01 seconds
 
-  // Adjust the threshold value to a valid range of 0-1023
   if (val > 350) {  // change the threshold value based on your specific lighting conditions
     digitalWrite(ledPin, LOW);  // turn off the LED if it's too bright
     ton = ++ton;
@@ -54,10 +55,12 @@ void loop() {
 
 
 if (ton > 500) {  // change the threshold value based on your specific lighting conditions
-    digitalWrite(leddly, LOW);  // turn off the LED if it's too bright
+    digitalWrite(leddly, LOW); 
+    myservo.write(0); // turn off the LED if it's too bright
   } 
   else {
     digitalWrite(leddly, HIGH); 
+
     
   }
 }
