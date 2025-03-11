@@ -26,11 +26,11 @@ void loop() {
 
 
   val = analogRead(photoResistorPin);  // read the value from the photoresistor and assign it to val
-//  Serial.println(val);  // print the value for debugging
+  Serial.println(val);  // print the value for debugging
 
   delay(10);  // wait for 0.01 seconds
 
-  if (val > 350) {  // change the threshold value based on your specific lighting conditions
+  if (val > 250) {  // change the threshold value based on your specific lighting conditions
     digitalWrite(ledPin, LOW);  // turn off the LED if it's too bright
     ton = ++ton;
   } 
@@ -38,8 +38,8 @@ void loop() {
   else {
     digitalWrite(ledPin, HIGH); 
     
-    if (ton > 500) {  // change the threshold value based on your specific lighting conditions
-      ton = 499;
+    if (ton > 250) {  // change the threshold value based on your specific lighting conditions
+      ton = 249;
     } 
   
    if (ton > 0) {  // change the threshold value based on your specific lighting conditions
@@ -53,7 +53,7 @@ void loop() {
    
 
   relockInput =  digitalRead(relockPin); 
-  Serial.println(relockInput);  // print the value for debugging
+  //Serial.println(relockInput);  // print the value for debugging
 
   if(relockInput == 0){
    myservo.write(90);
@@ -62,7 +62,7 @@ void loop() {
 
 
 
-if (ton > 500) {  // change the threshold value based on your specific lighting conditions
+if (ton > 250) {  // change the threshold value based on your specific lighting conditions
     digitalWrite(leddly, LOW); 
     myservo.write(0); // turn off the LED if it's too bright
   } 
